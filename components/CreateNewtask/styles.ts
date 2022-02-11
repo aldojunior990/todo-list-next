@@ -47,7 +47,7 @@ export const Container = styled.main`
       label {
         font-size: 0.8rem;
         color: var(--subtitle);
-        font-weight: 400;
+        font-weight: 600;
       }
 
       input {
@@ -58,9 +58,21 @@ export const Container = styled.main`
         width: 95%;
         border-radius: 0.5rem;
       }
+
+      textarea {
+        padding: 1rem;
+        margin: 0.8rem auto;
+        border: 0.5px solid var(--subtitle);
+        min-height: 5rem;
+        max-height: 5rem;
+        min-width: 95%;
+        max-width: 95%;
+        border-radius: 0.5rem;
+      }
     }
 
     .submit {
+      cursor: pointer;
       margin: 0 auto;
       width: 95%;
       border-radius: 0.5rem;
@@ -70,6 +82,10 @@ export const Container = styled.main`
       color: var(--white);
       font-weight: 700;
       height: 3rem;
+      transition: 0.5s;
+      &:hover {
+        filter: brightness(0.8);
+      }
     }
   }
 `;
