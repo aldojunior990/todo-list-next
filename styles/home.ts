@@ -17,37 +17,39 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button {
-        width: 10rem;
-        height: 3rem;
-        border-radius: 0.5rem;
-        border: 0;
-        background: var(--blue);
-        color: var(--white);
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.5s;
-        &:hover {
-          filter: brightness(0.9);
+      .newTask {
+        width: 50%;
+        form {
+          width: 100%;
+          display: flex;
+          input:first-child {
+            width: 60%;
+            border: 0;
+            border-radius: 0.5rem 0rem 0rem 0.5rem;
+            padding: 0.5rem;
+            height: 3rem;
+            font-size: 0.8rem;
+            font-weight: 400;
+          }
+
+          input:last-child {
+            width: 40%;
+            height: 3rem;
+            border-radius: 0rem 0.5rem 0.5rem 0rem;
+            border: 0;
+            background: var(--blue);
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover {
+              filter: brightness(0.9);
+            }
+          }
         }
       }
     }
-    .footer {
-      position: fixed;
-      bottom: 2rem;
-      width: 80%;
-      display: none;
-      align-items: center;
-      justify-content: flex-end;
-      button {
-        width: 4rem;
-        height: 3rem;
-        border: 0;
-        color: var(--white);
-        background: var(--blue);
-        border-radius: 0.5rem;
-      }
-    }
+
     h2 {
       font-weight: 700;
       font-size: 2.5rem;
@@ -55,11 +57,14 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     .content {
       .header {
-        button {
-          display: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        .newTask {
+          margin-top: 1rem;
+          width: 100%;
         }
       }
       .footer {

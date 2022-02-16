@@ -4,16 +4,23 @@ interface ContextProviderProps {
   children: ReactNode;
 }
 
+interface TaskProps {
+  id: number;
+  title: string;
+  createdAt: string;
+}
+
 interface ContextData {
-  modalIsOpen: boolean;
-  openModal: () => void;
-  closeModal: () => void;
+  setTasks: (TaskProps) => void;
+  tasks: TaskProps[];
 }
 
 export const Context = createContext<ContextData>({} as ContextData);
 
 export function ContextProvider({ children }: ContextProviderProps) {
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
 
   function openModal() {
     setIsOpen(true);
@@ -24,9 +31,7 @@ export function ContextProvider({ children }: ContextProviderProps) {
   }
 
   return (
-    <Context.Provider value={{ modalIsOpen, openModal, closeModal }}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ setTasks, tasks }}>{children}</Context.Provider>
   );
 }
 
