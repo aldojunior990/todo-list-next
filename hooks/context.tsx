@@ -7,15 +7,10 @@ interface ContextProviderProps {
 interface TaskProps {
   id: number;
   title: string;
-  subtitle: string;
-  description: string;
+  createdAt: string;
 }
 
 interface ContextData {
-  modalIsOpen: boolean;
-  openModal: () => void;
-  closeModal: () => void;
-
   setTasks: (TaskProps) => void;
   tasks: TaskProps[];
 }
@@ -36,11 +31,7 @@ export function ContextProvider({ children }: ContextProviderProps) {
   }
 
   return (
-    <Context.Provider
-      value={{ setTasks, tasks, modalIsOpen, openModal, closeModal }}
-    >
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ setTasks, tasks }}>{children}</Context.Provider>
   );
 }
 

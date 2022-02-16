@@ -1,32 +1,55 @@
 import { useContextProps } from '../../hooks/context';
 import { Container } from './style';
+import { AiFillDelete } from 'react-icons/ai';
+import { MdOutlineDateRange } from "react-icons/md";
 
 export function TaskList() {
-  const { tasks } = useContextProps();
+  const { tasks, setTasks } = useContextProps();
 
   console.log(tasks);
+
+  function OnDeletedTask(id: number) {
+    const removeTask = tasks.filter((task) => task.id != id);
+
+    setTasks(removeTask);
+
+  }
 
   if (tasks.length === 0) {
     return (
       <Container>
-        <p>Crie uma nova Task</p>
-        <img src="image.svg" alt="" />
+        <header>
+          <p>Crie uma nova Task</p>
+          <img src="image.svg" alt="" />
+        </header>
       </Container>
     );
   } else {
     return (
       <Container>
-        <ul>
-          {tasks.map((task) => {
-            return (
-              <li key={task.id}>
-                <p className="title">{task.title}</p>
-                <p className="subtitle">{task.subtitle}</p>
-                <p className="description">{task.description}</p>
-              </li>
-            );
-          })}
-        </ul>
+        {tasks.map((task) => {
+          return (
+            <div className="Task" key={task.id}>
+              <nav className="content">
+                <div className="info">
+                  <a className="taskTitle">{task.title}</a>
+                  <div className='taskDate'>
+                      <MdOutlineDateRange  />
+                      <a>{task.createdAt}</a>
+                  </div>
+                 
+                </div>
+
+                <div className="buttons">
+                  <input type="checkbox" />
+                  <button onClick={() => OnDeletedTask(task.id)}>
+                    <AiFillDelete className="icon" />
+                  </button>
+                </div>
+              </nav>
+            </div>
+          );
+        })}
       </Container>
     );
   }
