@@ -15,7 +15,7 @@ export default function Home() {
     const Tasks = {
       id: Math.random(),
       title: TaskTitle,
-      createdAt: format(new Date(), ' eeee d LLL H:mm')
+      createdAt: format(new Date(), ' eeee d LLL')
     }
 
     if (TaskTitle !== '') {
