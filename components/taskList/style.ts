@@ -38,7 +38,7 @@ export const Container = styled.main`
     border: 0.01px solid var(--subtitle);
     .content {
       margin: 0;
-      width: 98%;
+      width: 90%;
       height: 100%;
       display: flex;
       flex-direction: row;
